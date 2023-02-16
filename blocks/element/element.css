@@ -1,0 +1,8 @@
+.element {
+  display: grid;
+  grid-template-columns: 220px 62px;
+  grid-template-rows: auto;
+  border-radius: 10px;
+  background-color: #fff;
+  justify-content: center;
+}
