@@ -23,10 +23,10 @@ function closePopup(popup) {
 
 let userNameElement = document.querySelector('.profile__name');
 let userAboutMeElement = document.querySelector('.profile__occupation');
-let nameInput = document.querySelector('.popup__input_name');
+let nameInput = document.querySelector('.popup__item_name');
 nameInput.value = userNameElement.textContent;
 
-let jobInput = document.querySelector('.popup__input_about-me');
+let jobInput = document.querySelector('.popup__item_about-me');
 jobInput.value = userAboutMeElement.textContent;
 
 let formElement = document.querySelector('.popup__inputs');
