@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./vendor/normalize.css">
     <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
   </head>
@@ -18,13 +17,16 @@
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <button
           class="profile__edit-button button"
-          type="submit"
+          type="button"
           name="popup-button"
+          aria-label="Редактировать"
         >
-          <span class="sr-only">Редактировать</span>
         </button>
-        <button class="profile__add-button button" type="button">
-          <span class="sr-only">Добавить</span>
+        <button
+        class="profile__add-button button"
+        type="button"
+        aria-label="Добавить"
+        >
         </button>
         <p class="profile__occupation">Исследователь океана</p>
       </section>
@@ -37,8 +39,7 @@
               class="element__image"
             >
             <h2 class="element__title">Карачаевск</h2>
-            <button class="element__like-button button" type="button">
-              <span class="sr-only">Нравится</span>
+            <button class="element__like-button" type="button" aria-label="Нравится">
             </button>
           </li>
           <li class="element">
@@ -48,16 +49,12 @@
               class="element__image"
             >
             <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__like-button button" type="button">
-              <span class="sr-only">Нравится</span>
-            </button>
+            <button class="element__like-button" type="button" aria-label="Нравится"></button>
           </li>
           <li class="element">
             <img src="./images/gory.jpg" alt="Горы." class="element__image">
             <h2 class="element__title">Домбай</h2>
-            <button class="element__like-button button" type="button">
-              <span class="sr-only">Нравится</span>
-            </button>
+            <button class="element__like-button" type="button" aria-label="Нравится"></button>
           </li>
           <li class="element">
             <img
@@ -66,16 +63,12 @@
               class="element__image"
             >
             <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__like-button button" type="button">
-              <span class="sr-only">Нравится</span>
-            </button>
+            <button class="element__like-button" type="button" aria-label="Нравится"></button>
           </li>
           <li class="element">
             <img src="./images/gory.jpg" alt="Горы." class="element__image">
             <h2 class="element__title">Домбай</h2>
-            <button class="element__like-button button" type="button">
-              <span class="sr-only">Нравится</span>
-            </button>
+            <button class="element__like-button" type="button" aria-label="Нравится"></button>
           </li>
           <li class="element">
             <img
@@ -84,9 +77,7 @@
               class="element__image"
             >
             <h2 class="element__title">Карачаево-Черкессия</h2>
-            <button class="element__like-button button" type="button">
-              <span class="sr-only">Нравится</span>
-            </button>
+            <button class="element__like-button" type="button" aria-label="Нравится"></button>
           </li>
         </ul>
       </section>
@@ -96,24 +87,27 @@
     </footer>
     <div class="popup">
       <div class="popup__container">
-        <button class="popup__button-closed button" type="button">
-          <span class="sr-only">Закрыть</span>
+        <button
+        class="popup__button-closed button"
+        type="button"
+        aria-label="Закрыть"
+        >
         </button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__inputs" name="popup-inputs">
           <input
             type="text"
-            class="popup__item popup__item_name"
+            class="popup__item popup__item_type_name"
             name="name"
             placeholder="Имя"
           >
           <input
             type="text"
-            class="popup__item popup__item_about-me"
+            class="popup__item popup__item_type_about-me"
             name="about-me"
             placeholder="О себе"
           >
-          <button class="popup__button-save button" type="submit">
+          <button class="popup__button-save" type="submit">
             Сохранить
           </button>
         </form>

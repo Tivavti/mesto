@@ -10,7 +10,14 @@
   line-height: 1.22em;
   text-align: center;
   margin: 0 36px 37px;
-}
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+  }
+
+.button:hover {
+ opacity: .8;
+ cursor: pointer;
+ }
 
 @media screen and (max-width: 605px) {
   .popup__button-save {

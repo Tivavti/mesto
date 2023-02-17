@@ -1,5 +1,5 @@
 .element__like-button {
-  background-image: url(../../../images/serdtse.png);
+  background-image: url(../../../images/serdtse.svg);
   width: 26px;
   height: 20px;
   background-repeat: no-repeat;
@@ -7,4 +7,11 @@
   align-self: center;
   justify-self: center;
   background-color: rgb(255, 255, 255);
+  transition: opacity 1s ease-in-out;
 }
+
+.button:hover {
+  opacity: .5;
+  cursor: pointer;
+}
+

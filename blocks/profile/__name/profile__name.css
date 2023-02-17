@@ -17,5 +17,6 @@
     line-height: 1.21em;
     grid-row-start: 2;
     justify-self: end;
+    max-width: 189px;
   }
 }
