@@ -10,7 +10,7 @@
   transition: opacity 1s ease-in-out;
 }
 
-.button:hover {
+.element__like-button:hover {
   opacity: .5;
   cursor: pointer;
 }

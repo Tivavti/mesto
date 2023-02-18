@@ -2,7 +2,7 @@
   width: 32px;
   height: 32px;
   background-image: url(../../../images/close-button.svg);
-  background-color: rgba(0,0,0,0.5);
+  background-color: transparent;
   background-position: center;
   position: absolute;
   top: -40px;
