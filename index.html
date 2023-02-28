@@ -30,54 +30,24 @@
         </button>
         <p class="profile__occupation">Исследователь океана</p>
       </section>
-      <section class="elements">
+      <section class="elements" aria-label="Место">
         <ul class="elements__list">
-          <li class="element">
-            <img
-              src="./images/razrushenny_khram.jpg"
-              alt="Разрушенный храм в горах."
-              class="element__image"
-            >
-            <h2 class="element__title">Карачаевск</h2>
-            <button class="element__like-button" type="button" aria-label="Нравится">
-            </button>
-          </li>
-          <li class="element">
-            <img
-              src="./images/kholmy.jpg"
-              alt="Холмы."
-              class="element__image"
-            >
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__like-button" type="button" aria-label="Нравится"></button>
-          </li>
-          <li class="element">
-            <img src="./images/gory.jpg" alt="Горы." class="element__image">
-            <h2 class="element__title">Домбай</h2>
-            <button class="element__like-button" type="button" aria-label="Нравится"></button>
-          </li>
-          <li class="element">
-            <img
-              src="./images/kholmy.jpg"
-              alt="Холмы."
-              class="element__image"
-            >
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__like-button" type="button" aria-label="Нравится"></button>
-          </li>
-          <li class="element">
-            <img src="./images/gory.jpg" alt="Горы." class="element__image">
-            <h2 class="element__title">Домбай</h2>
-            <button class="element__like-button" type="button" aria-label="Нравится"></button>
-          </li>
-          <li class="element">
-            <img
-              src="./images/razrushenny_khram.jpg"
-              alt="Разрушенный храм в горах."
-              class="element__image"
-            >
-            <h2 class="element__title">Карачаево-Черкессия</h2>
-            <button class="element__like-button" type="button" aria-label="Нравится"></button>
+          <li>
+            <template class="element__template">
+              <div class="element">
+                <button
+                 class="element__delete-button button"
+                 type="button"
+                 name="delete-button"
+                 aria-label="Удалить"
+                >
+                </button>
+                <img class="element__image" alt="#" src="#">
+                <h2 class="element__title"></h2>
+                <button class="element__like-button" type="button" aria-label="Нравится">
+                </button>
+              </div>
+            </template>
           </li>
         </ul>
       </section>
@@ -85,7 +55,7 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup__type_edit">
       <div class="popup__container">
         <button
         class="popup__button-closed button"
@@ -94,17 +64,15 @@
         >
         </button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__inputs" name="popup-inputs">
+        <form class="popup__inputs popup__inputs_placed_profile" name="popup-inputs">
           <input
             type="text"
             class="popup__item popup__item_type_name"
-            name="name"
             placeholder="Имя"
           >
           <input
             type="text"
             class="popup__item popup__item_type_about-me"
-            name="about-me"
             placeholder="О себе"
           >
           <button class="popup__button-save" type="submit">
@@ -112,6 +80,46 @@
           </button>
         </form>
       </div>
+    </div>
+    <div class="popup popup__type_add">
+      <div class="popup__container">
+        <button
+        class="popup__button-closed button"
+        type="button"
+        aria-label="Закрыть"
+        >
+        </button>
+        <h2 class="popup__title">Новое место</h2>
+        <form class="popup__inputs popup__inputs_placed_elements" name="popup-inputs">
+          <input
+            type="text"
+            class="popup__item popup__item_type_place"
+            name="name"
+            placeholder="Название"
+          >
+          <input
+            type="text"
+            class="popup__item popup__item_type_link"
+            name="link"
+            placeholder="Ссылка на картинку"
+          >
+          <button class="popup__button-create" type="submit">
+            Создать
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup__type_image">
+      <figure class="popup__image-container">
+        <button
+          class="popup__button-closed button"
+          type="button"
+          aria-label="Закрыть"
+        >
+        </button>
+          <img class="popup__image" alt="#" src="#">
+          <figcaption class="popup__caption"></figcaption>
+      </figure>
     </div>
     <script src="./scripts/index.js"></script>
   </body>
