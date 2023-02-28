@@ -6,5 +6,6 @@
   border-top-right-radius: 10px;
   object-fit: cover;
   object-position: center;
-  filter: brightness(90%)
+  filter: brightness(90%);
+  cursor: pointer;
 }
