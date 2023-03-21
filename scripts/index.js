@@ -18,13 +18,23 @@ const profileAddButton = document.querySelector('.profile__add-button');
 const cardsContainer = document.querySelector('.elements__list');
 const imageElement = document.querySelector('.popup__image');
 const imageCaption = document.querySelector('.popup__caption');
+const popupList = Array.from(document.querySelectorAll('.popup'));
+
+function closeByKey(evt) {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
+}
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  window.addEventListener('keydown', closeByKey);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  window.removeEventListener('keydown', closeByKey);
 }
 
 function handleProfileFormSubmit(evt) {
@@ -121,3 +131,11 @@ popupAddCloseButton.addEventListener('click', function () {
 popupImageCloseButton.addEventListener('click', function () {
   closePopup(imagePopup);
 });
+
+popupList.forEach((popup) => {
+  popup.addEventListener('click', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup);
+    }
+  })
+})

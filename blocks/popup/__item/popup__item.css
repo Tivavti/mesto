@@ -7,11 +7,15 @@
   font-weight: 400;
   line-height: 1.21em;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
-  padding-top: 30px;
+  padding-bottom: 13px;
 }
 
 @media screen and (max-width: 605px){
   .popup__item  {
   padding-bottom: 10px;
   }
+}
+
+.popup__item:invalid {
+  border-bottom: 1px solid rgba(255, 0, 0, 1);
 }

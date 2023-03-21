@@ -2,8 +2,8 @@
   border: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding-top: 30px;
+  align-items: baseline;
+  padding-top: 50px;
   box-sizing: border-box;
 }
 
