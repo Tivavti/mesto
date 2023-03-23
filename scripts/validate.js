@@ -1,9 +1,11 @@
-const showInputError = (errorTextElement, validationMessage, activeErrorClass) => {
+const showInputError = (input, errorTextElement, validationMessage, activeErrorClass, errorClass) => {
+  input.classList.add(errorClass);
   errorTextElement.textContent = validationMessage;
   errorTextElement.classList.add(activeErrorClass);
 }
 
-const hideInputError = (errorTextElement, activeErrorClass) => {
+const hideInputError = (input, errorTextElement, activeErrorClass, errorClass) => {
+  input.classList.remove(errorClass);
   errorTextElement.classList.remove(activeErrorClass);
   errorTextElement.textContent = '';
 }
@@ -21,11 +23,11 @@ const enableButton = (submitButton, validSubmitButtonClass) => {
 const checkInputValidation = (input, errorClassTemplate, activeErrorClass, errorClass) => {
   const errorTextElement = document.querySelector(`${errorClassTemplate}${input.name}`);
   if(!input.validity.valid) {
-    input.classList.add(errorClass);
-    showInputError(errorTextElement, input.validationMessage, activeErrorClass, errorClass);
+
+    showInputError(input, errorTextElement, input.validationMessage, activeErrorClass, errorClass);
   } else {
     input.classList.remove(errorClass);
-    hideInputError(errorTextElement, activeErrorClass, errorClass);
+    hideInputError(input, errorTextElement, activeErrorClass, errorClass);
   }
 }
 

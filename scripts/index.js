@@ -58,7 +58,7 @@ function handlePlaceFormSubmit(evt) {
   closePopup(placePopup);
 }
 
-function fillPopup() {
+function openProfilePopup() {
   openPopup(profilePopup);
 
   nameInput.value = userNameElement.textContent;
@@ -119,7 +119,7 @@ popupList.forEach((popup) => {
   })
 })
 
-profileEditButton.addEventListener('click', fillPopup);
+profileEditButton.addEventListener('click', openProfilePopup);
 
 popupEditCloseButton.addEventListener('click', function () {
   closePopup(profilePopup);
