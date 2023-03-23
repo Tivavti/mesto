@@ -18,12 +18,14 @@ const enableButton = (submitButton, validSubmitButtonClass) => {
   submitButton.disabled = false;
 }
 
-const checkInputValidation = (input, errorClassTemplate, activeErrorClass) => {
+const checkInputValidation = (input, errorClassTemplate, activeErrorClass, errorClass) => {
   const errorTextElement = document.querySelector(`${errorClassTemplate}${input.name}`);
   if(!input.validity.valid) {
-    showInputError(errorTextElement, input.validationMessage, activeErrorClass);
+    input.classList.add(errorClass);
+    showInputError(errorTextElement, input.validationMessage, activeErrorClass, errorClass);
   } else {
-    hideInputError(errorTextElement);
+    input.classList.remove(errorClass);
+    hideInputError(errorTextElement, activeErrorClass, errorClass);
   }
 }
 
@@ -39,14 +41,10 @@ const toggleButtonState = (submitButton, validSubmitButtonClass, inputList) => {
   }
 }
 
-const setEventListeners = (form, inputList, { errorClassTemplate, activeErrorClass, validSubmitButtonClass }, submitButton) => {
-  form.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-  });
-
-  inputList.forEach((input) => {
+const setEventListeners = (inputList, { errorClassTemplate, activeErrorClass, validSubmitButtonClass, errorClass }, submitButton) => {
+   inputList.forEach((input) => {
     input.addEventListener('input', () => {
-      checkInputValidation(input, errorClassTemplate, activeErrorClass);
+      checkInputValidation(input, errorClassTemplate, activeErrorClass, errorClass);
       toggleButtonState(submitButton, validSubmitButtonClass, inputList);
     });
   });
@@ -58,10 +56,10 @@ const enableValidation = ( { formSelector, inputSelector, submitButtonSelector, 
     const inputList = form.querySelectorAll(inputSelector);
     const submitButton = form.querySelector(submitButtonSelector);
 
-    setEventListeners(form, inputList, config, submitButton);
+    setEventListeners(inputList, config, submitButton);
 
     form.addEventListener('reset', () => {
-      disableButton(submitButton, validSubmitButtonClass)
+      disableButton(submitButton, config.validSubmitButtonClass)
     })
   });
 };
@@ -72,5 +70,6 @@ enableValidation({
   errorClassTemplate: '.popup__item-error_type_',
   activeErrorClass: 'popup__input-error',
   submitButtonSelector: '.popup__button',
-  validSubmitButtonClass: 'popup__button_valid'
+  validSubmitButtonClass: 'popup__button_valid',
+  errorClass: 'popup__item-underline'
 });

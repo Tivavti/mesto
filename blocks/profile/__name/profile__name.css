@@ -16,7 +16,8 @@
     font-size: 27px;
     line-height: 1.21em;
     grid-row-start: 2;
-    justify-self: end;
+    justify-self: center;
     max-width: 189px;
+    padding-right: 10px;
   }
 }

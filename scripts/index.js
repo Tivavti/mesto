@@ -2,7 +2,7 @@ const profileEditButton = document.querySelector('.profile__edit-button');
 const profilePopup = document.querySelector('.popup_type_edit');
 const placePopup = document.querySelector('.popup_type_add');
 const imagePopup = document.querySelector('.popup_type_image');
-const newCard = document.querySelector('.element__template');
+const cardTemplate = document.querySelector('.element__template');
 const popupEditCloseButton = profilePopup.querySelector('.popup__button-closed');
 const popupAddCloseButton = placePopup.querySelector('.popup__button-closed');
 const popupImageCloseButton = imagePopup.querySelector('.popup__button-closed');
@@ -20,7 +20,7 @@ const imageElement = document.querySelector('.popup__image');
 const imageCaption = document.querySelector('.popup__caption');
 const popupList = Array.from(document.querySelectorAll('.popup'));
 
-function closeByKey(evt) {
+function closePopupByEscKey(evt) {
   if (evt.key === 'Escape') {
     const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened);
@@ -29,12 +29,12 @@ function closeByKey(evt) {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  window.addEventListener('keydown', closeByKey);
+  window.addEventListener('keydown', closePopupByEscKey);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  window.removeEventListener('keydown', closeByKey);
+  window.removeEventListener('keydown', closePopupByEscKey);
 }
 
 function handleProfileFormSubmit(evt) {
@@ -55,12 +55,18 @@ function handlePlaceFormSubmit(evt) {
   });
 
   evt.target.reset();
-
   closePopup(placePopup);
 }
 
+function fillPopup() {
+  openPopup(profilePopup);
+
+  nameInput.value = userNameElement.textContent;
+  jobInput.value = userAboutMeElement.textContent;
+}
+
 const createCard = (cardData) => {
-  const newCardCopy = newCard.content.cloneNode(true);
+  const newCardCopy = cardTemplate.content.cloneNode(true);
 
   //наполняем его информацией из объекта data,
   const cardTitle = newCardCopy.querySelector('.element__title');
@@ -105,12 +111,15 @@ initialCards.forEach(card => {
   renderCard(card);
 });
 
-profileEditButton.addEventListener('click', function () {
-  openPopup(profilePopup);
+popupList.forEach((popup) => {
+  popup.addEventListener('click', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup);
+    }
+  })
+})
 
-  nameInput.value = userNameElement.textContent;
-  jobInput.value = userAboutMeElement.textContent;
-});
+profileEditButton.addEventListener('click', fillPopup);
 
 popupEditCloseButton.addEventListener('click', function () {
   closePopup(profilePopup);
@@ -131,11 +140,3 @@ popupAddCloseButton.addEventListener('click', function () {
 popupImageCloseButton.addEventListener('click', function () {
   closePopup(imagePopup);
 });
-
-popupList.forEach((popup) => {
-  popup.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('popup_opened')) {
-      closePopup(popup);
-    }
-  })
-})

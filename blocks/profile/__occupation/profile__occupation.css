@@ -16,7 +16,8 @@
   .profile__occupation  {
    font-size: 14px;
    max-width: 282px;
-   grid-column: 1 / span 2;
-   grid-row-start: 4;
+   grid-column: 1;
+   grid-row-start: 3;
+   align-self: end;
   }
 }

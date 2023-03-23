@@ -5,4 +5,12 @@
   color: rgba(255, 0, 0, 1);
   min-height: 30px;
   max-width: 358px;
+  align-self: start;
+  padding-left: 40px;
+}
+
+@media screen and (max-width: 603px) {
+  .popup__item-error {
+  padding-left: 0;
+  }
 }

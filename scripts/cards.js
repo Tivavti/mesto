@@ -1,32 +1,32 @@
 const initialCards = [
   {
     name: 'Архыз',
-    alt: 'Горы.',
+    alt: '${name}',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
     name: 'Челябинская область',
-    alt: 'Река.',
+    alt: '${name}',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   },
   {
     name: 'Иваново',
-    alt: 'Панельные дома.',
+    alt: '${name}',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
   },
   {
     name: 'Камчатка',
-    alt: 'Сопка.',
+    alt: '${name}',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
   },
   {
     name: 'Холмогорский район',
-    alt: 'Железная дорога через лес. ',
+    alt: '${name}',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   },
   {
     name: 'Байкал',
-    alt: 'Скалистый берег Байкала.',
+    alt: '${name}',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ]

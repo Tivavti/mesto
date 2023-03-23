@@ -1,7 +1,6 @@
 .profile__add-button {
   border: 2px solid white;
-  grid-column-start: 5;
-  grid-column-end: 6;
+  grid-column-start: 4;
   width: 150px;
   height: 50px;
   align-self: center;
