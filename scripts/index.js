@@ -24,18 +24,18 @@ function closePopupByEscKey(evt) {
   if (evt.key === 'Escape') {
     const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened);
-  }
-}
+  };
+};
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   window.addEventListener('keydown', closePopupByEscKey);
-}
+};
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   window.removeEventListener('keydown', closePopupByEscKey);
-}
+};
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -56,14 +56,17 @@ function handlePlaceFormSubmit(evt) {
 
   evt.target.reset();
   closePopup(placePopup);
-}
+};
 
 function openProfilePopup() {
   openPopup(profilePopup);
 
   nameInput.value = userNameElement.textContent;
   jobInput.value = userAboutMeElement.textContent;
-}
+
+  const formValidationProfilePopup = new FormValidation(config, profilePopup);
+  formValidationProfilePopup.enableValidation();
+};
 
 class Card {
   //конструктор, который принимает данные карточки и шаблон, и сохраняет эти значения в свойствах
@@ -138,11 +141,11 @@ class Card {
     this._setEventListeners();
 
     return this._element;
-  }
-}
+  };
+};
 
 const renderCard = (card) => {
-  // Создаем карточку на основе данных
+  // Создаем карточку на основе класса
   const cardElement = new Card(card, '.element__template');
   // Помещаем ее в контейнер карточек
   cardsContainer.prepend(cardElement.generateCard());
@@ -156,9 +159,9 @@ popupList.forEach((popup) => {
   popup.addEventListener('click', (evt) => {
     if (evt.target.classList.contains('popup_opened')) {
       closePopup(popup);
-    }
-  })
-})
+    };
+  });
+});
 
 profileEditButton.addEventListener('click', openProfilePopup);
 
@@ -170,8 +173,11 @@ profileFormElement.addEventListener('submit', handleProfileFormSubmit);
 
 placeFormElement.addEventListener('submit', handlePlaceFormSubmit);
 
-profileAddButton.addEventListener('click', function () {
+profileAddButton.addEventListener('click', () => {
   openPopup(placePopup);
+
+  const formValidationPlacePopup = new FormValidation(config, placePopup);
+  formValidationPlacePopup.enableValidation();
 });
 
 popupAddCloseButton.addEventListener('click', function () {
