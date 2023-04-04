@@ -1,14 +1,6 @@
-const config = {
-  formSelector: '.popup__inputs',
-  inputSelector: '.popup__item',
-  errorClassTemplate: '.popup__item-error_type_',
-  activeErrorClass: 'popup__input-error',
-  submitButtonSelector: '.popup__button',
-  validSubmitButtonClass: 'popup__button_valid',
-  errorClass: 'popup__item-underline'
-};
+import { config } from './data.js';
 
-class FormValidation {
+export default class FormValidation {
   //принимает в конструктор объект настроек с селекторами и классами формы, принимает вторым параметром элемент той формы, которая валидируется;
   constructor(config, form) {
    this.config = config;
