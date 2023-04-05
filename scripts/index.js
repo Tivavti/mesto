@@ -3,6 +3,9 @@ import Card from './Card.js';
 import initialCards from './cards.js';
 import FormValidation from './FormValidation.js';
 
+const formValidationProfilePopup = new FormValidation(config, profilePopup);
+const formValidationPlacePopup = new FormValidation(config, placePopup);
+
 function closePopupByEscKey(evt) {
   if (evt.key === 'Escape') {
     const popupOpened = document.querySelector('.popup_opened');
@@ -10,7 +13,7 @@ function closePopupByEscKey(evt) {
   };
 };
 
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add('popup_opened');
   window.addEventListener('keydown', closePopupByEscKey);
 };
@@ -47,8 +50,7 @@ function openProfilePopup() {
   nameInput.value = userNameElement.textContent;
   jobInput.value = userAboutMeElement.textContent;
 
-  const formValidationProfilePopup = new FormValidation(config, profilePopup);
-  formValidationProfilePopup.enableValidation();
+  formValidationProfilePopup.clearInputError();
 };
 
 const renderCard = (card) => {
@@ -70,6 +72,9 @@ popupList.forEach((popup) => {
   });
 });
 
+formValidationProfilePopup.enableValidation();
+formValidationPlacePopup.enableValidation();
+
 profileEditButton.addEventListener('click', openProfilePopup);
 
 popupEditCloseButton.addEventListener('click', function () {
@@ -81,10 +86,8 @@ profileFormElement.addEventListener('submit', handleProfileFormSubmit);
 placeFormElement.addEventListener('submit', handlePlaceFormSubmit);
 
 profileAddButton.addEventListener('click', () => {
+  formValidationPlacePopup.clearInputError();
   openPopup(placePopup);
-
-  const formValidationPlacePopup = new FormValidation(config, placePopup);
-  formValidationPlacePopup.enableValidation();
 });
 
 popupAddCloseButton.addEventListener('click', function () {
@@ -94,3 +97,5 @@ popupAddCloseButton.addEventListener('click', function () {
 popupImageCloseButton.addEventListener('click', function () {
   closePopup(imagePopup);
 });
+
+

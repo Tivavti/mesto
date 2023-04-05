@@ -9,16 +9,24 @@ export default class FormValidation {
    this._submitButton = this._form.querySelector(this.config.submitButtonSelector);
   };
 
-  _showInputError(input, errorTextElement, validationMessage) {
+  _showInputError(input, validationMessage) {
+    const errorTextElement = document.querySelector(`${this.config.errorClassTemplate}${input.name}`);
     input.classList.add(this.config.errorClass);
     errorTextElement.textContent = validationMessage;
     errorTextElement.classList.add(this.config.activeErrorClass);
   };
 
-  _hideInputError(input, errorTextElement) {
+  _hideInputError(input) {
+    const errorTextElement = document.querySelector(`${this.config.errorClassTemplate}${input.name}`);
     input.classList.remove(this.config.errorClass);
     errorTextElement.classList.remove(this.config.activeErrorClass);
     errorTextElement.textContent = '';
+  };
+
+  clearInputError() {
+    this._inputList.forEach((input) => {
+      this._hideInputError(input);
+    });
   };
 
   //изменяет состояние кнопки сабмита
@@ -34,12 +42,11 @@ export default class FormValidation {
 
   //метод проверяет валидность поля
   _checkInputValidation(input) {
-    const errorTextElement = document.querySelector(`${this.config.errorClassTemplate}${input.name}`);
     if(!input.validity.valid) {
-      this._showInputError(input, errorTextElement, input.validationMessage, this.config);
+      this._showInputError(input, input.validationMessage, this.config);
     } else {
       input.classList.remove(this.config.errorClass);
-      this._hideInputError(input, errorTextElement, this.config);
+      this._hideInputError(input, this.config);
     };
   };
 
@@ -67,9 +74,8 @@ export default class FormValidation {
 
   //включает валидацию формы
   enableValidation(config) {
-    const formList = Array.from(document.querySelectorAll(this.config.formSelector));
-    formList.forEach(() => {
-      this._setEventListeners(this._inputList, config, this._submitButton);
+    this._inputList.forEach((input) => {
+      this._setEventListeners(this._inputList, input, config, this._submitButton);
 
       this._form.addEventListener('reset', () => {
         this._disableButton(this._submitButton, this.config.validSubmitButtonClass);

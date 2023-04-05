@@ -3,7 +3,7 @@
   width: 100%;
   margin: 0 auto 48px;
   display: grid;
-  grid-template-columns: 150px 350px 224px 170px;
+  grid-template-columns: 150px 370px 204px 170px;
   grid-template-rows: auto;
   box-sizing: border-box;
 }

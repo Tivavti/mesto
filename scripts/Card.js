@@ -1,3 +1,5 @@
+import { imagePopup, imageElement, imageCaption } from'./data.js'
+import { openPopup } from './index.js'
 export default class Card {
   //конструктор, который принимает данные карточки и шаблон, и сохраняет эти значения в свойствах
   constructor(data, templateSelector) {
@@ -73,6 +75,3 @@ export default class Card {
     return this._element;
   };
 };
-
-
-import { imagePopup, imageElement, imageCaption } from'./data.js'
