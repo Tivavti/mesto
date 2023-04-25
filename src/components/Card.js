@@ -1,11 +1,10 @@
-import { imagePopup, imageElement, imageCaption } from'./data.js'
-import { openPopup } from './index.js'
 export default class Card {
   //конструктор, который принимает данные карточки и шаблон, и сохраняет эти значения в свойствах
-  constructor(data, templateSelector) {
+  constructor( { data, handleCardClick }, templateSelector) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   //метод, который получает разметку из шаблона
@@ -30,15 +29,6 @@ export default class Card {
     this._element = null;
   };
 
-  //нажатие карточки для зума изображения
-  _handleOpenImagePopup() {
-    imageElement.src = this._link;
-    imageElement.alt = this._name;
-    imageCaption.textContent = this._name;
-
-    openPopup(imagePopup);
-  };
-
   //накладывает все обработчики событий на карточку
   _setEventListeners() {
     this._buttonLike.addEventListener('click', () => {
@@ -50,7 +40,10 @@ export default class Card {
     });
 
     this._cardImage.addEventListener('click', () => {
-      this._handleOpenImagePopup();
+      this._handleCardClick({
+        name: this._name,
+        link: this._link
+      });
     });
   }
 
@@ -58,6 +51,7 @@ export default class Card {
   generateCard() {
     //заголовок
     this._element = this._getTemplate();
+
     this._cardTitle = this._element.querySelector('.element__title');
     this._cardTitle.textContent = this._name;
 

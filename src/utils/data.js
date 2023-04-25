@@ -5,6 +5,7 @@ const imagePopup = document.querySelector('.popup_type_image');
 const cardTemplate = document.querySelector('.element__template');
 const popupEditCloseButton = profilePopup.querySelector('.popup__button-closed');
 const popupAddCloseButton = placePopup.querySelector('.popup__button-closed');
+const popupCloseButtonList = document.querySelectorAll('.popup__button-closed');
 const popupImageCloseButton = imagePopup.querySelector('.popup__button-closed');
 const profileFormElement = document.querySelector('.popup__inputs_placed_profile');
 const placeFormElement = document.querySelector('.popup__inputs_placed_elements');
@@ -29,4 +30,4 @@ const config = {
   errorClass: 'popup__item-underline'
 };
 
-export { profileEditButton, profilePopup, placePopup, imagePopup, cardTemplate, popupEditCloseButton, popupAddCloseButton, popupImageCloseButton, profileFormElement, placeFormElement, userNameElement, userAboutMeElement, nameInput, jobInput, titleInput, linkInput, profileAddButton, cardsContainer, imageElement, imageCaption, popupList, config }
+export { profileEditButton, profilePopup, placePopup, imagePopup, cardTemplate, popupEditCloseButton, popupAddCloseButton, popupCloseButtonList, popupImageCloseButton, profileFormElement, placeFormElement, userNameElement, userAboutMeElement, nameInput, jobInput, titleInput, linkInput, profileAddButton, cardsContainer, imageElement, imageCaption, popupList, config }
