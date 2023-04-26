@@ -7,10 +7,10 @@ export default class Section {
 
   //отрисовка всех элементов
   renderItems(items) {
-    items.forEach((item) => this._renderer(item));
+    items.forEach(this._renderer);
   }
 
-  setItem(element) {
+  addItem(element) {
     this._container.prepend(element);
   }
 }

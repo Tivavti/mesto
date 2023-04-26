@@ -26,14 +26,14 @@ const placePopupWithForm = new PopupWithForm(
   '.popup_type_add',
  (data) => {
     const cardElement = createCard(data);
-    section.setItem(cardElement);
+    section.addItem(cardElement);
 });
 
 const createCard = (data) => {
   const card = new Card ({
     data,
     handleCardClick: (data) => {
-      popupWithImage.openPopup(data);
+      popupWithImage.open(data);
     }},
     '.element__template'
   );
@@ -42,7 +42,7 @@ const createCard = (data) => {
 
 const section = new Section ({
   renderer: (data) => {
-    section.setItem(createCard(data));
+    section.addItem(createCard(data));
   }},
 '.elements__list');
 
@@ -58,18 +58,17 @@ profilePopupWithForm.setEventListeners();
 placePopupWithForm.setEventListeners();
 
 profileEditButton.addEventListener('click', () => {
-  profilePopupWithForm.openPopup();
+  profilePopupWithForm.open();
   const profileUserInfo = userInfoElement.getUserInfo();
 
   nameInput.value = profileUserInfo.userName;
   jobInput.value = profileUserInfo.userAboutMe;
 
-  formValidationProfilePopup.clearInputError();
+  formValidationProfilePopup.clearInputErrors();
 })
 
 profileAddButton.addEventListener('click', () => {
-  placePopupWithForm.openPopup();
-  formValidationPlacePopup.clearInputError();
+  placePopupWithForm.open();
+  formValidationPlacePopup.clearInputErrors();
   formValidationPlacePopup.disableButton();
-
 });

@@ -26,7 +26,6 @@ export default class Card {
   //обработчик удаления
   _delete() {
     this._element.remove();
-    this._element = null;
   };
 
   //накладывает все обработчики событий на карточку

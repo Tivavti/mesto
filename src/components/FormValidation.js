@@ -1,5 +1,3 @@
-import { config } from '../utils/data.js';
-
 export default class FormValidation {
   //принимает в конструктор объект настроек с селекторами и классами формы, принимает вторым параметром элемент той формы, которая валидируется;
   constructor(config, form) {
@@ -25,7 +23,7 @@ export default class FormValidation {
     errorTextElement.textContent = '';
   };
 
-  clearInputError = () => {
+  clearInputErrors = () => {
     this._inputList.forEach((input) => {
       this._hideInputError(input);
     });
@@ -53,34 +51,34 @@ export default class FormValidation {
   };
 
   _hasInvalidInput() {
-      return Array.from(this._inputList).some((input) => !input.validity.valid);
+    return Array.from(this._inputList).some((input) => !input.validity.valid);
   };
 
   _toggleButtonState() {
     if(!this._hasInvalidInput(this._inputList)) {
-    this._enableButton(this._submitButton, this.config.validSubmitButtonClass);
+      this._enableButton();
     } else {
-    this.disableButton(this._submitButton, this.config.validSubmitButtonClass);
+      this.disableButton();
     };
   };
 
 //устанавливает все обработчики
   _setEventListeners() {
       this._inputList.forEach((input) => {
-      input.addEventListener('input', () => {
-       this._checkInputValidation(input);
-       this._toggleButtonState(this._submitButton, this.config.validSubmitButtonClass, this._inputList);
-      });
+        input.addEventListener('input', () => {
+         this._checkInputValidation(input);
+         this._toggleButtonState();
+        });
      });
-    };
+  };
 
   //включает валидацию формы
   enableValidation() {
-    this._inputList.forEach((input) => {
-      this._setEventListeners(this._inputList, input, config, this._submitButton);
+    this._inputList.forEach(() => {
+      this._setEventListeners();
 
       this._form.addEventListener('reset', () => {
-        this.disableButton(this._submitButton, this.config.validSubmitButtonClass);
+        this.disableButton();
       });
     });
   };
