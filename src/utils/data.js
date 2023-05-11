@@ -2,6 +2,7 @@ const profileEditButton = document.querySelector('.profile__edit-button');
 const profilePopup = document.querySelector('.popup_type_edit');
 const placePopup = document.querySelector('.popup_type_add');
 const imagePopup = document.querySelector('.popup_type_image');
+const avatarPopup = document.querySelector('.popup_type_avatar');
 const cardTemplate = document.querySelector('.element__template');
 const popupEditCloseButton = profilePopup.querySelector('.popup__button-closed');
 const popupAddCloseButton = placePopup.querySelector('.popup__button-closed');
@@ -11,8 +12,10 @@ const profileFormElement = document.querySelector('.popup__inputs_placed_profile
 const placeFormElement = document.querySelector('.popup__inputs_placed_elements');
 const userNameElement = document.querySelector('.profile__name');
 const userAboutMeElement = document.querySelector('.profile__occupation');
+const userAvatar = document.querySelector('.profile__avatar');
+const avatarInput = document.querySelector('.popup__item_type_avatar');
 const nameInput = document.querySelector('.popup__item_type_name');
-const jobInput = document.querySelector('.popup__item_type_about-me');
+const jobInput = document.querySelector('.popup__item_type_about');
 const titleInput = placeFormElement.querySelector('.popup__item_type_place');
 const linkInput = placeFormElement.querySelector('.popup__item_type_link');
 const profileAddButton = document.querySelector('.profile__add-button');
@@ -20,6 +23,8 @@ const cardsContainer = document.querySelector('.elements__list');
 const imageElement = document.querySelector('.popup__image');
 const imageCaption = document.querySelector('.popup__caption');
 const popupList = Array.from(document.querySelectorAll('.popup'));
+const popupAvatarButton = document.querySelector('.profile__avatar-button');
+
 const config = {
   formSelector: '.popup__inputs',
   inputSelector: '.popup__item',
@@ -30,4 +35,4 @@ const config = {
   errorClass: 'popup__item-underline'
 };
 
-export { profileEditButton, profilePopup, placePopup, imagePopup, cardTemplate, popupEditCloseButton, popupAddCloseButton, popupCloseButtonList, popupImageCloseButton, profileFormElement, placeFormElement, userNameElement, userAboutMeElement, nameInput, jobInput, titleInput, linkInput, profileAddButton, cardsContainer, imageElement, imageCaption, popupList, config }
+export { profileEditButton, profilePopup, placePopup, imagePopup, avatarPopup, cardTemplate, popupEditCloseButton, popupAddCloseButton, popupCloseButtonList, popupImageCloseButton, profileFormElement, placeFormElement, userNameElement, userAboutMeElement, userAvatar, avatarInput, nameInput, jobInput, titleInput, linkInput, profileAddButton, cardsContainer, imageElement, imageCaption, popupList, popupAvatarButton, config }

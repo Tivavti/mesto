@@ -1,10 +1,17 @@
 export default class Card {
-  //конструктор, который принимает данные карточки и шаблон, и сохраняет эти значения в свойствах
-  constructor( { data, handleCardClick }, templateSelector) {
+  constructor( { data, handleCardClick, handleDeleteClick, handleLikeClick }, userId, templateSelector) {
+    this.cardId = data._id;
     this._name = data.name;
     this._link = data.link;
-    this._templateSelector = templateSelector;
+    this.likes = data.likes;
+    this._ownerId = data.owner._id;
+
     this._handleCardClick = handleCardClick;
+    this._handleLikeClick = handleLikeClick;
+    this._handleDeleteClick = handleDeleteClick;
+
+    this.userId = userId;
+    this._templateSelector = templateSelector;
   }
 
   //метод, который получает разметку из шаблона
@@ -18,24 +25,32 @@ export default class Card {
     return cardElement;
   }
 
-  //обработчик лайка
-  _like() {
-    this._buttonLike.classList.toggle('element__like-button_active');
+  //обработчики лайка
+  setLike() {
+    this._buttonLike.classList.add('element__like-button_active');
+  }
+
+  deleteLike() {
+    this._buttonLike.classList.remove('element__like-button_active');
+  }
+
+  isLiked() {
+    return this.likes.some((item) => item._id === this.userId);
   }
 
   //обработчик удаления
-  _delete() {
+  delete() {
     this._element.remove();
   };
 
   //накладывает все обработчики событий на карточку
   _setEventListeners() {
     this._buttonLike.addEventListener('click', () => {
-      this._like();
+      this._handleLikeClick(this);
     });
 
     this._buttonDelete.addEventListener('click', () => {
-     this._delete();
+      this._handleDeleteClick(this);
     });
 
     this._cardImage.addEventListener('click', () => {
@@ -48,9 +63,9 @@ export default class Card {
 
   //создание карточки для дальнейшей отрисовки в разметке
   generateCard() {
-    //заголовок
     this._element = this._getTemplate();
 
+    //заголовок
     this._cardTitle = this._element.querySelector('.element__title');
     this._cardTitle.textContent = this._name;
 
@@ -61,7 +76,18 @@ export default class Card {
 
     //кнопки
     this._buttonLike = this._element.querySelector('.element__like-button');
+
+    //счётчик лайков
+    this._counterLikes = this._element.querySelector('.element__quantity-likes');
+    this._counterLikes.textContent = this.likes.length;
+      if (this.isLiked()) {
+        this.setLike();
+      }
+
     this._buttonDelete = this._element.querySelector('.element__delete-button');
+      if (this._ownerId !== this.userId) {
+        this._buttonDelete.remove();
+      };
 
     this._setEventListeners();
 

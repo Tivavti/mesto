@@ -8,4 +8,5 @@
   overflow: hidden;
   padding: 25px 0 25px 21px;
   align-self: start;
+  grid-row: span 2;
   }

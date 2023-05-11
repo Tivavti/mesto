@@ -16,9 +16,7 @@ export default class FormValidation {
 
   _hideInputError = (input) => {
     const errorTextElement = this._form.querySelector(`${this.config.errorClassTemplate}${input.name}`);
-    console.log(this._form)
     input.classList.remove(this.config.errorClass);
-    console.log(errorTextElement)
     errorTextElement.classList.remove(this.config.activeErrorClass);
     errorTextElement.textContent = '';
   };
