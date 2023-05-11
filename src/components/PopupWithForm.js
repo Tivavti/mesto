@@ -21,6 +21,11 @@ export default class PopupWithForm extends Popup {
     return formValues;
   }
 
+  handleLoading() {
+    const loadingElement = this._form.querySelector('.popup__button');
+    loadingElement.textContent = 'Сохранение...';
+  }
+
   setEventListeners() {
     super.setEventListeners();
 
@@ -29,11 +34,6 @@ export default class PopupWithForm extends Popup {
 
       const inputValues = this._getInputValues();
       this._handleFormSubmit(inputValues);
-
-      const spinner = this._form.querySelector('.popup__button');
-      spinner.textContent = 'Сохранить'
-
-      this.close();
     })
   }
 

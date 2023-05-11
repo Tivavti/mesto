@@ -3,7 +3,7 @@ export default class Card {
     this.cardId = data._id;
     this._name = data.name;
     this._link = data.link;
-    this.likes = data.likes;
+    this._likes = data.likes;
     this._ownerId = data.owner._id;
 
     this._handleCardClick = handleCardClick;
@@ -26,7 +26,7 @@ export default class Card {
   }
 
   //обработчики лайка
-  setLike() {
+  addLike() {
     this._buttonLike.classList.add('element__like-button_active');
   }
 
@@ -34,13 +34,23 @@ export default class Card {
     this._buttonLike.classList.remove('element__like-button_active');
   }
 
-  isLiked() {
-    return this.likes.some((item) => item._id === this.userId);
+  setLike(data) {
+    this._counterLikes.textContent = data.likes.length;
+    this._likes = data.likes;
+  }
+
+  _likeCard() {
+    this.hasLiked;
+  }
+
+  hasLiked() {
+    return this._likes.some((item) => item._id === this.userId);
   }
 
   //обработчик удаления
   delete() {
     this._element.remove();
+    this._element = null;
   };
 
   //накладывает все обработчики событий на карточку
@@ -76,13 +86,12 @@ export default class Card {
 
     //кнопки
     this._buttonLike = this._element.querySelector('.element__like-button');
-
     //счётчик лайков
     this._counterLikes = this._element.querySelector('.element__quantity-likes');
-    this._counterLikes.textContent = this.likes.length;
-      if (this.isLiked()) {
-        this.setLike();
-      }
+    this._counterLikes.textContent = this._likes.length;
+    if (this.hasLiked()) {
+      this.addLike();
+    }
 
     this._buttonDelete = this._element.querySelector('.element__delete-button');
       if (this._ownerId !== this.userId) {
@@ -90,6 +99,7 @@ export default class Card {
       };
 
     this._setEventListeners();
+    this._likeCard();
 
     return this._element;
   };
