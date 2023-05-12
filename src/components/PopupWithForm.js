@@ -7,6 +7,7 @@ export default class PopupWithForm extends Popup {
     this._form = this._popup.querySelector('.popup__inputs');
     this._handleFormSubmit = handleFormSubmit;
     this._inputList = Array.from(this._popup.querySelectorAll('.popup__item'));
+    this._loadingElement = this._form.querySelector('.popup__button');
   }
 
   _getInputValues() {
@@ -22,8 +23,7 @@ export default class PopupWithForm extends Popup {
   }
 
   handleLoading() {
-    const loadingElement = this._form.querySelector('.popup__button');
-    loadingElement.textContent = 'Сохранение...';
+    this._loadingElement.textContent = 'Сохранение...';
   }
 
   setEventListeners() {

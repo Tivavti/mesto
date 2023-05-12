@@ -87,7 +87,7 @@ const placePopupWithForm = new PopupWithForm(
         console.log(`Ошибка ${res.status}`);
       })
       .finally(() => {
-        placePopupWithForm.handleLoading('Сохранить');
+        profilePopupWithForm.handleLoading('Сохранить');
       })
 });
 
